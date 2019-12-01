@@ -7,8 +7,6 @@ const mapStateToProps = (state, props) => {
   const trip = getTripById(state, props.match.params.id);
   const country = getCountryByCode(state, trip.country.code);
 
-  console.log(trip);
-
   return {
     ...trip,
     country,

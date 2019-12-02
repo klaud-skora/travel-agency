@@ -1,12 +1,16 @@
-.fswitchWrapper {
+.switchWrapper {
   position: relative;
 
+  @keyframes moveUp {
+    0% { transform: translateY(200px); }
+    100% {transform: translateY(0);}
+  }
   > :first-child ~ * {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    transform: translateY(200px);
-    transition: .5s;
+    animation: moveUp 1s forwards;
   }
 }
+

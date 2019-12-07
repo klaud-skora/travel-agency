@@ -17,7 +17,7 @@ const OrderSummary = (props) => (
   </h2>
 );
 OrderSummary.propTypes = {
-  tripCost: PropTypes.number,
+  tripCost: PropTypes.string,
   options: PropTypes.object,
 };
 

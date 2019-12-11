@@ -4,7 +4,7 @@ import Icon from '../../common/Icon/Icon';
 import { formatPrice } from '../../../utils/formatPrice';
 import PropTypes from 'prop-types';
 
-const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
+const OrderOptionIcons = ({values, currentValue, required, setOptionValue}) => (
   <div
     className={styles.icon}
   >
@@ -12,7 +12,7 @@ const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
       <div
         key='null'
         value=''
-        onClick={event => setOptionValue(event(''))}
+        onClick={event => setOptionValue(event())}
       >
         <Icon name='times-circle' />
         {'none'}
@@ -20,10 +20,10 @@ const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
     )}
     {values.map(value => (
       <div
-        className={styles.icon}
-        //className={styles.iconActive}
+        className={styles.icon, value.id == currentValue ? styles.iconActive : ''}
         key={value.id}
         value={currentValue}
+        id={value.id}
         onClick={event => setOptionValue(event.currentTarget.id)}
       >
         <Icon name={value.icon} />
@@ -35,7 +35,7 @@ const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
 );
 OrderOptionIcons.propTypes = {
   values: PropTypes.array,
-  required: PropTypes.node,
+  required: PropTypes.bool,
   currentValue: PropTypes.string,
   setOptionValue: PropTypes.func,
 };

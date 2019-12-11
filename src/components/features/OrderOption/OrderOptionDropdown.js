@@ -19,7 +19,7 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
 );
 OrderOptionDropdown.propTypes = {
   values: PropTypes.array,
-  required: PropTypes.node,
+  required: PropTypes.bool,
   currentValue: PropTypes.string,
   setOptionValue: PropTypes.func,
 };

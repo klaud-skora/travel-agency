@@ -6,8 +6,7 @@ import { formatPrice } from '../../../utils/formatPrice';
 
 const OrderSummary = (props) => (
   <h2 className={styles.component}>
-    {console.log('asdfjchbasdkfj', props.options)}
-    {formatPrice(calculateTotal(props.tripCost,props.options))}
+    ${calculateTotal(formatPrice(props.tripCost),(props.options))}
   </h2>
 );
 OrderSummary.propTypes = {

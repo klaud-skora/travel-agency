@@ -27,6 +27,7 @@ const initialState = {
     options: {},
   },
 };
+console.log('order options', initialState.order.options);
 
 // define reducers
 const reducers = {

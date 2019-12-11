@@ -15,7 +15,6 @@ const OrderForm = (props) => (
         </Col>)}
       <Col xs={12}>
         <OrderSummary tripCost={props.tripCost} options={props.options}/>
-        {console.log('prps', props.tripCost)}
       </Col>
     </Row>
   </Grid>

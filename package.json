@@ -40,6 +40,7 @@
     "react-dom": "^16.8.6",
     "react-flexbox-grid": "^2.1.2",
     "react-html-parser": "^2.0.2",
+    "react-if": "^3.4.3",
     "react-redux": "^7.0.1",
     "react-router-dom": "^5.0.0",
     "react-router-transition": "^2.0.0",

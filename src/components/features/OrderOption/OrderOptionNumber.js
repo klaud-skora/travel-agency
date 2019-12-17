@@ -5,7 +5,6 @@ import { formatPrice } from '../../../utils/formatPrice';
 
 const OrderOptionNumber = ({currentValue, limits, price, setOptionValue}) => (
   <div className={styles.number}>
-    {console.log('wa;ju', currentValue)}
     <input
       type='number'
       className={styles.inputSmall}

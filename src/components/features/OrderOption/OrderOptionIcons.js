@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const OrderOptionIcons = ({values, currentValue, required, setOptionValue}) => (
   <div
-    className={styles.icon}
+    className={styles.icons}
   >
     {required ? '' : (
       <div
@@ -20,7 +20,7 @@ const OrderOptionIcons = ({values, currentValue, required, setOptionValue}) => (
     )}
     {values.map(value => (
       <div
-        className={styles.icon, value.id == currentValue ? styles.iconActive : ''}
+        className={`${styles.icon} ${value.id == currentValue ? styles.iconActive : ''}`}
         key={value.id}
         value={currentValue}
         id={value.id}

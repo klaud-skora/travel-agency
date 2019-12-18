@@ -9,6 +9,7 @@ const OrderOptionText = ({currentValue, setOptionValue}) => (
       className={styles.text}
       value={currentValue}
       onChange={event => setOptionValue(event.currentTarget.value)}
+      required
     ></input>
   </div>
 );
@@ -16,5 +17,7 @@ OrderOptionText.propTypes = {
   currentValue: PropTypes.string,
   setOptionValue: PropTypes.func,
 };
+
+
 
 export default OrderOptionText;

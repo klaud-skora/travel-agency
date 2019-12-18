@@ -10,12 +10,15 @@ import { formatPrice } from '../../../utils/formatPrice';
 import { calculateTotal } from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
-const sendOrder = (options, tripCost) => {
+const sendOrder = (options, tripCost, tripName, tripId, countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {
     ...options,
     totalCost,
+    tripName,
+    tripId,
+    countryCode,
   };
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -29,12 +32,18 @@ const sendOrder = (options, tripCost) => {
     body: JSON.stringify(payload),
   };
 
-  fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-    });
+  options.name.length != 0 && options.contact.length != 0
+    ?
+    (
+      fetch(url, fetchOptions)
+        .then(function(response){
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+        })
+    )
+    :
+    alert('Give us details to contact');
 };
 
 const OrderForm = (props) => (
@@ -47,8 +56,8 @@ const OrderForm = (props) => (
       <Col xs={12}>
         <OrderSummary tripCost={props.tripCost} options={props.options}/>
       </Col>
-      {console.log('joł', props.options)}
-      <Button onClick={() => sendOrder(props.options, props.tripCost)}>Order now!</Button>
+      {console.log('joł', props.countryCode)}
+      <Button onClick={() => sendOrder(props.options, props.tripCost, props.name, props.id, props.countryCode)}>Order now!</Button>
     </Row>
   </Grid>
 );
@@ -57,6 +66,9 @@ OrderForm.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.object,
   setOrderOption: PropTypes.func,
+  name: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  countryCode: PropTypes.string,
 };
 
 export default OrderForm;

@@ -18,6 +18,7 @@ const optionTypes = {
 };
 const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
   const OptionComponent = optionTypes[type];
+  console.log('AJDI',id);
   if (!OptionComponent) {
     return null;
   } else {

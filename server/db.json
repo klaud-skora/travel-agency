@@ -1,0 +1,21 @@
+{
+  "orders": [
+    {
+      "car-rental": "full",
+      "accommodation": "house",
+      "features": [
+        "pool",
+        "kitchen",
+        "all-inclusive",
+        "security"
+      ],
+      "adults": "2",
+      "children": 0,
+      "name": "Klaudia",
+      "contact": "666777555",
+      "start-date": "2019-12-23T10:26:15.000Z",
+      "totalCost": "$112,362",
+      "id": 1
+    }
+  ]
+}

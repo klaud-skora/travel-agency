@@ -121,8 +121,15 @@ for(let type in optionTypes){
           expect(wrapper.length).toBe(1);
 
           const input = renderedSubcomponent.find('input[type="checkbox"]');
-          //console.log(input.debug());
+
           expect(input.length).toBe(mockProps.values.length);
+        });
+        it('should run setOrderOption function on change', () => {
+          const input = renderedSubcomponent.find('input[type="checkbox"]');
+          input.find(`input[value="${testValue}"]`).simulate('change', {currentTarget: {checked: true}});
+
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith( { [mockProps.id]: [mockProps.currentValue, testValue] });
         });
         break;
       }
@@ -133,8 +140,7 @@ for(let type in optionTypes){
         });
         it('should run setOrderOption function on change', () => {
           renderedSubcomponent.find('.date').simulate('change', testValue);
-          //expect(mockSetOrderOption).toBeCalledTimes(1);
-          //console.log('fgchvjb',renderedSubcomponent.find('.date'));
+          expect(mockSetOrderOption).toBeCalledTimes(1);
           //expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
         break;

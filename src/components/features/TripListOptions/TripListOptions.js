@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './TripListOptions.scss';
-
 import {Row, Col} from 'react-flexbox-grid';
 
 class TripListOptions extends React.Component {

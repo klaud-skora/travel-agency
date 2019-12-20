@@ -7,7 +7,9 @@ const select = {
   countdown: '.countdown',
   promoDescription: '.promoDescription',
 };
-
+const mockProps = {
+  title: 'Happy Hour',
+};
 
 describe('Componentr HappyHourAd', () => {
   it('should render without crashing', () => {
@@ -19,5 +21,11 @@ describe('Componentr HappyHourAd', () => {
     expect(component.exists(select.title)).toEqual(true);
     //expect(component.exists(select.countdown)).toEqual(true);
     expect(component.exists(select.promoDescription)).toEqual(true);
+  });
+  it('should have title from props title', () => {
+
+    const component = shallow(<HappyHourAd {...mockProps} />);
+    const renderedTitle = component.find(select.title).text();
+    expect(renderedTitle).toEqual(mockProps.title);
   });
 });

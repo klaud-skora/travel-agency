@@ -6,7 +6,17 @@ class HappyHourAd extends React.Component {
   static propTypes = {
     title: PropTypes.node,
   }
+  constructor(){
+    super();
+    /* run this.forceUpdate() every second */
+    this.forceUpdate();
+  }
 
+  forceUpdate() {
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+  }
+
+  // ile sekund do następnej promki
   getCountdownTime() {
     const currentTime = new Date();
     // Date.UTC - data podana -> rok, miesiąc, dzień -> ustawiam godzinę 12 = start happy hour dla utc
@@ -20,6 +30,7 @@ class HappyHourAd extends React.Component {
     return Math.round((nextNoon.getTime() - currentTime.getTime()) / 1000); // time countdown : ms -> s
   }
 
+  //ilosc sekund do next promki - czas ktory uplynal
   render () {
     const {title} = this.props;
     return (

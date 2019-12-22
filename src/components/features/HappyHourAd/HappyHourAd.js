@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 class HappyHourAd extends React.Component {
   static propTypes = {
     title: PropTypes.node,
+    promoDescription: PropTypes.string,
   }
   constructor(){
     super();
@@ -23,21 +24,26 @@ class HappyHourAd extends React.Component {
     const nextNoon = new Date(Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0, 0));
 
     //if it is after 12:00 - beginning of happy hour
-    if(currentTime.getUTCHours() >= 12){
+    if (currentTime.getUTCHours() >= 12) {
       nextNoon.setUTCDate(currentTime.getUTCDate()+1); // change nextNoon
     }
 
     return Math.round((nextNoon.getTime() - currentTime.getTime()) / 1000); // time countdown : ms -> s
   }
 
-  //ilosc sekund do next promki - czas ktory uplynal
   render () {
-    const {title} = this.props;
+    const {title, promoDescription} = this.props;
+    const countdown = this.getCountdownTime() / 3600;
+    let announcement;
+    if (countdown > 23) {
+      announcement = promoDescription;
+    } else {
+      announcement = this.getCountdownTime();
+    }
     return (
       <div>
         <h3 className={styles.title}>{title}</h3>
-        {/*<div className={styles.countdown}></div>*/}
-        <div className={styles.promoDescription}>{this.getCountdownTime()}</div>
+        <div className={styles.promoDescription}>{announcement}</div>
       </div>
     );
   }

@@ -12,7 +12,7 @@ const mockProps = {
   promoDescription: 'It\'s your time! Take advantage of Happy Hour! All offers 20% off!',
 };
 
-describe('Componentr HappyHourAd', () => {
+describe('Component HappyHourAd', () => {
   it('should render without crashing', () => {
     const component = shallow(<HappyHourAd />);
     expect(component).toBeTruthy();
@@ -71,11 +71,12 @@ const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
 
     const component = shallow(<HappyHourAd {...mockProps} />);
 
+    //te cztery
     const newTime = new Date();
     newTime.setSeconds(newTime.getSeconds() + delaySeconds);
     global.Date = mockDate(newTime.getTime());
-
     jest.advanceTimersByTime(delaySeconds * 1000);
+
     const renderedTime = component.find(select.promoDescription).text();
     expect(renderedTime).toEqual(expectedDescription);
 
@@ -94,4 +95,10 @@ describe('Component HappyHourAd with mocked Date', () => {
   checkDescriptionAtTime('12:00:00', mockProps.promoDescription);
   checkDescriptionAtTime('12:59:59', mockProps.promoDescription);
   checkDescriptionAtTime('12:10:40', mockProps.promoDescription);
+});
+
+describe('Component HappyHourAfter with mocked Date and delay', () => {
+  checkDescriptionAfterTime('11:57:58', 2, '120');
+  checkDescriptionAfterTime('11:59:58', 3, mockProps.promoDescription);
+
 });

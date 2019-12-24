@@ -2,6 +2,11 @@ import React from 'react';
 import DaysToSummer from './DaysToSummer';
 import { shallow } from 'enzyme';
 
+beforeAll(() => {
+  const utilsModule = jest.requireActual('../../../utils/formatDays.js');
+  utilsModule.formatDays = jest.fn(days => days);
+});
+
 describe('Component DaysToSummer', () => {
   it('should render without crashing', () => {
     const component = shallow(<DaysToSummer />);
@@ -43,7 +48,6 @@ const checkDaysAtDate = (date, expectedDescription) => {
     global.Date = trueDate;
   });
 };
-
 
 describe('Component DaysToSummer with mocked Date', () => {
   checkDaysAtDate('2019-06-20', '1');

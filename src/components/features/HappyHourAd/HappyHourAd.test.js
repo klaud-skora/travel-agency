@@ -25,7 +25,6 @@ describe('Component HappyHourAd', () => {
   it('should render heading and description', () => {
     const component = shallow(<HappyHourAd />);
     expect(component.exists(select.title)).toEqual(true);
-    //expect(component.exists(select.countdown)).toEqual(true);
     expect(component.exists(select.promoDescription)).toEqual(true);
   });
   it('should have title from props title', () => {
@@ -75,8 +74,6 @@ const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
     global.Date = mockDate(`2019-05-14T${time}.135Z`);
 
     const component = shallow(<HappyHourAd {...mockProps} />);
-
-    //te cztery
     const newTime = new Date();
     newTime.setSeconds(newTime.getSeconds() + delaySeconds);
     global.Date = mockDate(newTime.getTime());

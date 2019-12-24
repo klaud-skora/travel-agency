@@ -21,6 +21,7 @@ class HappyHourAd extends React.Component {
   // ile sekund do następnej promki
   getCountdownTime() {
     const currentTime = new Date();
+    //console.log('lkjhgfd', currentTime);
     // Date.UTC - data podana -> rok, miesiąc, dzień -> ustawiam godzinę 12 = start happy hour dla utc
     const nextNoon = new Date(Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0, 0));
 
